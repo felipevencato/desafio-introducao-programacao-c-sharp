@@ -6,19 +6,21 @@ namespace DIO
 {
     class Run
     {
-        static void Main(string[] args) {
-            IRun [] Exe = {
+        static void Main(string[] args)
+        {
+            var Exe = new List<IRun>{
                 new Divisao(),
                 new Distancia(),
-                new Mandioca (),
+                new Mandioca ()
             };
-            if (args.Count() == 0){
-                string info = "Informe o numero do Executorício\n";
+            if (args.Count() == 0)
+            {
                 int i = 0;
-                do
-                    info += $"{i} {Exe[i].ToString()}\n";
-                while (++i < Exe.Count());
-                Console.WriteLine(info + "dotnet run [NUMERO]");
+                Console.WriteLine(
+                    "Informe o numero do Executorício\n"
+                    + string.Join("\n", Exe.Select(x => $"{i++} {x}"))
+                    + "\ndotnet run [NUMERO]"
+                );
                 return;
             }
             Exe.ElementAt(Int32.Parse(args[0]))
