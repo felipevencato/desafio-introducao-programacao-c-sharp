@@ -23,8 +23,11 @@ namespace DIO
                 );
                 return;
             }
-            Exe.ElementAt(Int32.Parse(args[0]))
-            .Run();
+	    int Op = Int32.Parse(args[0]);
+	    if (Op > Exe.Count)
+		    Console.WriteLine("Opção Inválida");
+            else
+		    Exe.ElementAt((Op == 0)? 0:Op - 1).Run();
         }
     }
 }
